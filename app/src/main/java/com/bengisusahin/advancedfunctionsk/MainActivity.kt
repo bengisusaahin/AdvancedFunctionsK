@@ -4,11 +4,22 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), LifecycleLogger by LifecycleLoggerImplementation(){
+
+    //property delegates ihtiyac olamdiginda yer kaplamiyo
+    private val myVariable by lazy {
+        println("hello this is a lazy implementation")
+        10
+    }
+
     private var myInt : Int? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        registerLifecycleOwner(this)
+
+        println(myVariable)
 
         if (myInt != null){
             val num = myInt!! + 1
