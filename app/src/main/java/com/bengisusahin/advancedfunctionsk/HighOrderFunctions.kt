@@ -32,4 +32,23 @@ fun main(){
     for (num in squaredNumbers){
         println(num)
     }
+
+    val filterAndMapCombined = myNumList.filter { it < 6 }.map { it * it }
+    for(num in filterAndMapCombined){
+        println(num)
+    }
+
+    val musicians = listOf<Musician>(
+        Musician("James", 60, "Guitar"),
+        Musician("Lars",55,"Drum"),
+        Musician("Kirk",50,"Guitar")
+    )
+    val smallMusician = musicians.filter { it.age < 60 }.map { it.instrument }
+    for (musician in smallMusician){
+        println(musician)
+    }
+}
+
+data class Musician(val name: String, val age: Int, val instrument: String){
+
 }
